@@ -17,8 +17,32 @@ const slides = [
 	}
 ]
 
-
 let indexcourant = 0;
+
+/* Navigation carroussel flèche de gauche et boucle à l'infini*/
+document.querySelector("#nav-left").addEventListener("click", () => {
+	/*console.log("J'ai cliqué sur la flèche gauche")*/
+	indexcourant = indexcourant-1;
+	if (indexcourant < 0 ) {    
+		indexcourant = slides.length - 1;
+	}	
+	console.log(indexcourant);
+	creationCarroussel();
+}
+)
+
+/* Navigation carousel flèche de droite et boucle à l'infini */
+
+document.querySelector("#nav-right").addEventListener("click", () => {
+	/*console.log("J'ai cliqué sur la flèche droite")*/
+		indexcourant = indexcourant+1;
+	if(indexcourant == slides.length){
+		indexcourant = 0;
+	}
+	console.log(indexcourant);
+	creationCarroussel();
+}
+)
 
 /* Création bullet point en fonction du nombre de slide dans le carroussel */
 let dotsContainer = document.querySelector("#banner .dots");
@@ -30,29 +54,6 @@ for(let i = 0; i < slides.length ; i++) {
 	}
 	dotsContainer.appendChild(bulletpoint);
 }
-
-/* Navigation carroussel flèche de gauche et boucle à l'infini*/
-document.querySelector("#nav-left").addEventListener("click", () => {
-	indexcourant = indexcourant-1;
-	if (indexcourant < 0 ) {    
-		indexcourant = slides.length - 1;
-	}	
-	/*console.log(indexcourant);*/
-	creationCarroussel();
-}
-)
-
-/* Navigation carousel flèche de droite et boucle à l'infini */
-
-document.querySelector("#nav-right").addEventListener("click", () => {
-	indexcourant = indexcourant+1;
-	if(indexcourant == slides.length){
-		indexcourant = 0;
-	}
-	/*console.log(indexcourant);*/
-	creationCarroussel();
-}
-)
 
 /* Carroussel */
 
